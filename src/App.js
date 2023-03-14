@@ -1,25 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+//bibliotecas 
+
+
+
+
+//componentes 
+import ResetStyle from "./styles/ResetStyle";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import styled from "styled-components";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+
+import logo from "./img/logo.svg"
+
+
 
 function App() {
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Main>
+      <BrowserRouter>
+        <Routes>
+        <Route 
+          path="/"
+          element={<Login/>}
+
+          />
+            
+
+            
+          <Route 
+          path="/cadastro"
+          element={<Register/>}
+
+          />
+            
+
+          
+        </Routes>
+      </BrowserRouter>
+      </Main>
+    </>
   );
+
 }
 
+
 export default App;
+
+
+const Main = styled.main`
+display:flex;
+align-items: center;
+justify-content: center;
+
+flex-direction: column;
+
+`
