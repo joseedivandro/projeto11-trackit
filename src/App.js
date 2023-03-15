@@ -7,7 +7,9 @@
 import ResetStyle from "./styles/ResetStyle";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Habits from "./pages/Habits";
 import styled from "styled-components";
+
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 import logo from "./img/logo.svg"
@@ -20,27 +22,33 @@ function App() {
 
   return (
     <>
-    <Main>
-      <BrowserRouter>
-        <Routes>
-        <Route 
-          path="/"
-          element={<Login/>}
+      <Main>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={<Login />}
 
-          />
-            
+            />
 
-            
-          <Route 
-          path="/cadastro"
-          element={<Register/>}
 
-          />
-            
 
-          
-        </Routes>
-      </BrowserRouter>
+            <Route
+              path="/cadastro"
+              element={<Register />}
+
+            />
+
+            <Route
+              path="/habitos"
+              element={<Habits/>}
+
+            />
+
+
+
+          </Routes>
+        </BrowserRouter>
       </Main>
     </>
   );
