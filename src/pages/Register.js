@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
+import axios from "axios";
+import { ThreeDots } from "react-loader-spinner";
 
 import logo from "../img/logo.svg"
 
@@ -14,8 +15,37 @@ export default function Register() {
     const [userLoginRegister, setUserLoginRegister] = useState('')
     const [userPasswordRegister, setUserPasswordRegister] = useState('')
     const [disableInfo, setDisableInfo] = useState(false)
-    const [userNameRegister, setUserNameRegister]= useState('')
+    const [userNameRegister, setUserNameRegister] = useState('')
     const [userImageRegister, setUserImageRegister] = useState('')
+    const navigate = useNavigate()
+
+
+    function EnviaDados(e) {
+        e.preventDefault()
+
+        setDisableInfo(true)
+
+        const url = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up"
+
+        const registraEnvio = {
+            email: userLoginRegister,
+            name: userNameRegister,
+            image: userImageRegister,
+            password: userPasswordRegister
+        }
+
+        axios.post(url, registraEnvio)
+            .then(res => {
+                navigate("/")
+                setDisableInfo(false)
+
+            })
+            .catch(err => {
+                alert("tente novamente mais tarde")
+                setDisableInfo(false)
+
+            })
+    }
 
     return (
         <>
@@ -23,11 +53,12 @@ export default function Register() {
                 <img src={logo} alt="logo"></img>
             </Header>
 
-            <Form>
+            <Form onSubmit={(e) => EnviaDados(e)}>
                 <input
                     value={userLoginRegister}
                     type="email"
                     disabled={disableInfo}
+                    onChange={(e) => setUserLoginRegister(e.currentTarget.value)}
                     placeholder="email"
                     data-test="email-input"
                 />
@@ -35,6 +66,7 @@ export default function Register() {
                     value={userPasswordRegister}
                     type="password"
                     disabled={disableInfo}
+                    onChange={(e) => setUserPasswordRegister(e.currentTarget.value)}
                     placeholder="senha"
                     data-test="email-input"
                 />
@@ -42,25 +74,48 @@ export default function Register() {
                     value={userNameRegister}
                     type="text"
                     disabled={disableInfo}
+                    onChange={(e) => setUserNameRegister(e.currentTarget.value)}
                     placeholder="nome"
                     data-test="user-name-input"
                 />
-                 <input
+                <input
                     value={userImageRegister}
                     type="url"
                     disabled={disableInfo}
+                    onChange={(e) => setUserImageRegister(e.currentTarget.value)}
                     placeholder="foto"
                     data-test="user-image-input"
                 />
 
 
-                <button>Entrar</button>
+                <button
+                    type="submit"
+                    data-test="signup-btn"
+                    disabled={disableInfo}
+                >
+                    {disableInfo ? (
+                        <ThreeDots
+                            height="80"
+                            width="80"
+                            radius="9"
+                            color="#FFFFFF"
+                            ariaLabel="three-dots-loading"
+                            wrapperStyle={{}}
+                            wrapperClassName=""
+                            visible={true}
+                        />
+                    ) : (
+                        "Cadastrar"
+                    )}
+                </button>
+
+
             </Form>
 
             <Link to="/" data-test="login-link" >
-            <Text><p>Já tem uma conta? Faça login!</p></Text>
+                <Text><p>Já tem uma conta? Faça login!</p></Text>
             </Link>
-            
+
 
         </>
     )
