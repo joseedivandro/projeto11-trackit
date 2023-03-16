@@ -1,19 +1,60 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
+import { ThreeDots } from "react-loader-spinner";
+
+import axios from "axios";
 
 import logo from "../img/logo.svg"
 
 
 
 
+//use de context para o projeto em si
 
+
+
+import { UserContext } from "./UseContext";
 
 export default function Login() {
+
+
+    const navigate = useNavigate()
+
     const [userLogin, setUserLogin] = useState('')
     const [disableInfo, setDisableInfo] = useState(false)
-    const [userPassword, setPassword] = useState('')
+    const [userPassword, setUserPassword] = useState('')
+
+    const { setUserContext } = useContext(UserContext)
+
+
+
+
+    function enviaLoginUser(e) {
+        e.preventDefault()
+
+        setDisableInfo(true)
+
+        const url = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login"
+
+        const infoLoginUser = {
+            email: userLogin,
+            password: userPassword
+        }
+
+        axios.post(url, infoLoginUser)
+            .then(res => {  
+                setDisableInfo(false)
+                navigate("/hoje")
+            })
+            .catch(err => {
+                console.log(err)
+                setDisableInfo(false)
+            })
+    }
+
+
 
     return (
         <>
@@ -21,34 +62,52 @@ export default function Login() {
                 <img src={logo} alt="logo"></img>
             </Header>
 
-            <Form>
+            <Form onSubmit={(e) => enviaLoginUser(e)}>
                 <input
                     value={userLogin}
                     type="email"
                     disabled={disableInfo}
+                    onChange={(e) => setUserLogin(e.currentTarget.value)}
                     placeholder="email"
+
                     data-test="email-input"
                 />
                 <input
                     value={userPassword}
                     type="password"
                     disabled={disableInfo}
+                    onChange={(e) => setUserPassword(e.currentTarget.value)}
                     placeholder="senha"
+
                     data-test="password-input"
                 />
 
 
                 <button
-                type="submit"
-                disabled={disableInfo}
-                data-test="login-btn"
-                >Entrar</button>
+                    type="submit"
+                    disabled={disableInfo}
+                    data-test="login-btn"
+                >
+                    {disableInfo ? (
+                        <ThreeDots
+                            height="80"
+                            width="80"
+                            radius="9"
+                            color="#FFFFFF"
+                            ariaLabel="three-dots-loading"
+                            wrapperStyle={{}}
+                            wrapperClassName=""
+                            visible={true}
+                        />
+                    ) : (
+                        "Entrar"
+                    )}
+                </button>
+
+                <Link to="/cadastro" data-test="signup-link">
+                    <p>Não tem uma conta? Cadastre-se!</p>
+                </Link>
             </Form>
-
-            <Link to="/cadastro" data-test="signup-link">
-                <Text><p>Não tem uma conta? Cadastre-se!</p></Text>
-            </Link>
-
         </>
     )
 

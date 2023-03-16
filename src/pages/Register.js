@@ -12,12 +12,15 @@ import logo from "../img/logo.svg"
 
 
 export default function Register() {
+
+    const navigate = useNavigate()
+
     const [userLoginRegister, setUserLoginRegister] = useState('')
     const [userPasswordRegister, setUserPasswordRegister] = useState('')
     const [disableInfo, setDisableInfo] = useState(false)
     const [userNameRegister, setUserNameRegister] = useState('')
     const [userImageRegister, setUserImageRegister] = useState('')
-    const navigate = useNavigate()
+    
 
 
     function EnviaDados(e) {
@@ -113,7 +116,7 @@ export default function Register() {
             </Form>
 
             <Link to="/" data-test="login-link" >
-                <Text><p>Já tem uma conta? Faça login!</p></Text>
+                <p>Já tem uma conta? Faça login!</p>
             </Link>
 
 
@@ -124,7 +127,7 @@ export default function Register() {
 
 
 
-const Text = styled.text`
+const Textrun = styled.text`
 >p{
     margin-top: 25px;
     color: #52B6FF;
