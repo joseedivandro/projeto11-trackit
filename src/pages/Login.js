@@ -15,7 +15,7 @@ import logo from "../img/logo.svg"
 
 
 
-import { UserContext } from "./UseContext";
+import { UserContext } from "./Context/UseContext";
 
 export default function Login() {
 
@@ -57,7 +57,7 @@ export default function Login() {
 
 
     return (
-        <>
+        <Main>
             <Header>
                 <img src={logo} alt="logo"></img>
             </Header>
@@ -108,12 +108,21 @@ export default function Login() {
                     <p>Não tem uma conta? Cadastre-se!</p>
                 </Link>
             </Form>
-        </>
+        </Main>
     )
 
 }
 
 
+
+
+const Main = styled.main`
+
+display:flex;
+flex-direction: column;
+align-items: center;
+
+`
 
 const Text = styled.text`
 >p{
@@ -133,6 +142,7 @@ flex-direction: column;
 
 >img{
     margin-top: 68px;
+    width: 250px;
 }
 
 

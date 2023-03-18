@@ -1,9 +1,4 @@
-//bibliotecas 
 
-
-
-
-//componentes 
 import ResetStyle from "./styles/ResetStyle";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -15,17 +10,28 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 
 
-import {UserContext} from "./pages/UseContext"
+import {UserContext} from "./pages/Context/UseContext"
+import { HabitsContext } from "./pages/Context/HabitsContext";
 
 
 function App() {
 
   const [userReceivedInfo, setUserReceivedInfo] = useState({})
+  const [HabitoPorcentagem, setHabitoPorcentagem] = useState(0)
+  const [userHabits, setUserHabits] = useState([])
+  const [habitNameToAdd, setHabitNameToAdd] = useState("")
+
+
+ 
 
   return (
     <>
     
       <Main>
+
+      <HabitsContext.Provider
+          value={{ HabitoPorcentagem, setHabitoPorcentagem, userHabits, setUserHabits, habitNameToAdd, setHabitNameToAdd }}
+        >
       <UserContext.Provider
         value={{ userReceivedInfo, setUserReceivedInfo }}
     >
@@ -57,6 +63,7 @@ function App() {
           </Routes>
         </BrowserRouter>
         </UserContext.Provider>
+        </HabitsContext.Provider>
       </Main>
     </>
   );
@@ -68,11 +75,7 @@ function App() {
 
 
 const Main = styled.main`
-display:flex;
-align-items: center;
-justify-content: center;
 
-flex-direction: column;
 
 `
 

@@ -9,8 +9,9 @@ export default function FooterUsers() {
     return (
        
             <FooterUser>
+                <Link to={"/habitos"}>
                 <p>Hábitos</p>
-
+                </Link>
                 <CircleMenu>
                 <Link
                     to="/hoje"
@@ -32,7 +33,9 @@ export default function FooterUsers() {
                 </Link>
                     </CircleMenu>
                 
+                <Link to={"/historico"}>
                 <p>Histórico</p>
+                </Link>
                 
             </FooterUser>
 
@@ -59,7 +62,11 @@ align-items:center;
 justify-content: space-around;
 font-family: 'Lexend Deca';
 color: #52B6FF;
-margin-bottom: 10px;
+
+
+>a{
+    text-decoration: none;
+}
 
 
 `

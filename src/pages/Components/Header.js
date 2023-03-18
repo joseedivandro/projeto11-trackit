@@ -31,7 +31,7 @@ width:100%;
 display:flex;
 align-items:center;
 justify-content: space-between;
-
+margin: auto 0px;
 
 >p{
     margin-left: 18px;

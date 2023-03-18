@@ -51,7 +51,7 @@ export default function Register() {
     }
 
     return (
-        <>
+        <Main>
             <Header>
                 <img src={logo} alt="logo"></img>
             </Header>
@@ -120,11 +120,18 @@ export default function Register() {
             </Link>
 
 
-        </>
+        </Main>
     )
 
 }
 
+
+const Main = styled.main`
+display:flex;
+flex-direction: column;
+align-items: center;
+
+`
 
 
 const Textrun = styled.text`
@@ -145,6 +152,7 @@ flex-direction: column;
 
 >img{
     margin-top: 68px;
+    width: 250px;
 }
 
 
