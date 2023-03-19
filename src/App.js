@@ -5,12 +5,13 @@ import Register from "./pages/Register";
 import Habits from "./pages/Habits";
 import styled from "styled-components";
 import Hoje from "./pages/Hoje";
+import History from "./pages/History";
 import { useState } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 
 
-import {UserContext} from "./pages/Context/UseContext"
+import {ReceivedInfoContext} from "./pages/Context/UseContext"
 import { HabitsContext } from "./pages/Context/HabitsContext";
 
 
@@ -28,13 +29,16 @@ function App() {
     <>
     
       <Main>
+        <ResetStyle/>
+
+      <ReceivedInfoContext.Provider
+        value={{ userReceivedInfo, setUserReceivedInfo }}
+    >
 
       <HabitsContext.Provider
           value={{ HabitoPorcentagem, setHabitoPorcentagem, userHabits, setUserHabits, habitNameToAdd, setHabitNameToAdd }}
         >
-      <UserContext.Provider
-        value={{ userReceivedInfo, setUserReceivedInfo }}
-    >
+     
         <BrowserRouter>
           <Routes>
             <Route
@@ -56,14 +60,19 @@ function App() {
               path="/habitos"
               element={<Habits/>}
             />
+            <Route
+            path="/historico"
+            element={<History/>}
+            />      
 
            
 
 
           </Routes>
         </BrowserRouter>
-        </UserContext.Provider>
+       
         </HabitsContext.Provider>
+        </ReceivedInfoContext.Provider>
       </Main>
     </>
   );

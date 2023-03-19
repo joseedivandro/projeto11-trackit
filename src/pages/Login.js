@@ -15,7 +15,7 @@ import logo from "../img/logo.svg"
 
 
 
-import { UserContext } from "./Context/UseContext";
+import { ReceivedInfoContext } from "./Context/UseContext";
 
 export default function Login() {
 
@@ -26,7 +26,7 @@ export default function Login() {
     const [disableInfo, setDisableInfo] = useState(false)
     const [userPassword, setUserPassword] = useState('')
 
-    const { setUserContext } = useContext(UserContext)
+    const { setUserReceivedInfo } = useContext(ReceivedInfoContext)
 
 
 
@@ -45,6 +45,9 @@ export default function Login() {
 
         axios.post(url, infoLoginUser)
             .then(res => {  
+                const userInfoToStore = JSON.stringify(res.data)
+                localStorage.setItem('userInfo', userInfoToStore)
+                setUserReceivedInfo(JSON.parse(userInfoToStore))
                 setDisableInfo(false)
                 navigate("/hoje")
             })

@@ -56,7 +56,7 @@ const FooterUser = styled.div`
 box-sizing: border-box;
 display: flex;
 background-color:white;
-width: 375px;
+width: 100%;
 height: 70px;
 position:fixed;
 bottom: 0px;
