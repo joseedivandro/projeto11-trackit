@@ -51,6 +51,7 @@ export default function Login() {
             .catch(err => {
                 console.log(err)
                 setDisableInfo(false)
+                alert('Usuário ou senha invalido(s), tente novamente')
             })
     }
 

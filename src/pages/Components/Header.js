@@ -8,13 +8,13 @@ export default function HeaderUser() {
 
 
     return (
-        <>
+        <div data-test="header">
         <HeaderPage>
             <p>TrackIt</p>
             <img></img>
         </HeaderPage>
       
-        </>
+        </div>
 
     )
 }

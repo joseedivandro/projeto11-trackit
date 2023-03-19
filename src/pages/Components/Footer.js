@@ -8,8 +8,10 @@ export default function FooterUsers() {
 
     return (
        
-            <FooterUser>
-                <Link to={"/habitos"}>
+            <FooterUser data-test="menu">
+                <Link 
+                data-test="habit-link"
+                to={"/habitos"}>
                 <p>Hábitos</p>
                 </Link>
                 <CircleMenu>
@@ -33,7 +35,9 @@ export default function FooterUsers() {
                 </Link>
                     </CircleMenu>
                 
-                <Link to={"/historico"}>
+                <Link 
+                data-test="history-link"
+                to={"/historico"}>
                 <p>Histórico</p>
                 </Link>
                 
