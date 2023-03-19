@@ -44,7 +44,7 @@ height: 800px;
     margin-left: 20px;
     margin-right: 70px;
     font-size: 18px;
-    color:  #666666;
+    color:  #666666;    
 }
 
 

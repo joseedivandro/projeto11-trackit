@@ -11,7 +11,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 
 
-import {ReceivedInfoContext} from "./pages/Context/UseContext"
+import {userContext} from "./pages/Context/UseContext"
 import { HabitsContext } from "./pages/Context/HabitsContext";
 
 
@@ -31,7 +31,7 @@ function App() {
       <Main>
         <ResetStyle/>
 
-      <ReceivedInfoContext.Provider
+      <userContext.Provider
         value={{ userReceivedInfo, setUserReceivedInfo }}
     >
 
@@ -72,7 +72,7 @@ function App() {
         </BrowserRouter>
        
         </HabitsContext.Provider>
-        </ReceivedInfoContext.Provider>
+        </userContext.Provider>
       </Main>
     </>
   );

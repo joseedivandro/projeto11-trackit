@@ -66,15 +66,15 @@ export default function Today() {
     }, [])
 
     return (
-        <TodayWrapper>
+        <Container>
             <UserHeader />
             {infoWasReceived ? (
-                <TodaySection noHabitsConcluded={noHabitsConcluded}>
-                    <TodayHeader>
+                <Main noHabitsConcluded={noHabitsConcluded}>
+                    <Textos>
                         <h2 data-test="today">{diaAtual}</h2>
                         <p data-test="today-counter">{(!HabitoPorcentagem) ? ("Nenhum hábito concluído ainda") : (`${HabitoPorcentagem.toFixed(0)}% dos hábitos concluídos`)}</p>
-                    </TodayHeader>
-                    <HabitosDiaSection>
+                    </Textos>
+                    <ContainerDia>
                         {HabitosDia[0] !== undefined && (HabitosDia.map((todayHabit, i) => (
                             <div key={i}>
                                 <TodayHabit
@@ -85,30 +85,31 @@ export default function Today() {
                                 />
                             </div>
                         )))}
-                    </HabitosDiaSection>
-                </TodaySection>) : (
+                    </ContainerDia>
+                </Main>) : (
                 <div>CARREGANDO</div>
             )}
             <FooterUsers />
-        </TodayWrapper>
+        </Container>
     )
 }
 
-const TodayWrapper = styled.main`
+const Container = styled.main`
     background: #F2F2F2;
     margin-top: 70px;
     height: calc(100% - 140px);
     overflow-y: scroll;
+   height: 600px;
 `
 
-const TodaySection = styled.section`
+const Main = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
 `
 
-const TodayHeader = styled.div`
+const Textos = styled.div`
     width: 340px;
     margin: 20px 0px;
     > h2 {
@@ -125,7 +126,7 @@ const TodayHeader = styled.div`
     }
 `
 
-const HabitosDiaSection = styled.section`
+const ContainerDia = styled.section`
     > div {
         margin-bottom: 10px;
     }

@@ -228,6 +228,7 @@ const Main = styled.main`
     background: #F2F2F2;
     margin-bottom: 90px;
     alig-items: center;
+    height: 600px;
 `
 
 const Container = styled.section`

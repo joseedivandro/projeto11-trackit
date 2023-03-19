@@ -2,13 +2,13 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
-import { ReceivedInfoContext } from "../Context/UseContext";
+import { userContext } from "../Context/UseContext";
 
 
 export default function HeaderUser() {
 
 
-    const { userReceivedInfo, setUserReceivedInfo } = useContext(ReceivedInfoContext)
+    const { userReceivedInfo, setUserReceivedInfo } = useContext(userContext)
 
     const nagivate = useNavigate()
 

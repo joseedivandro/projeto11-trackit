@@ -21,13 +21,9 @@ export default function FooterUsers() {
                 >
                     <CircularProgressbarWithChildren
                         
-                        styles={buildStyles({
-                            strokeLinecap: 'round',
-                            pathTransitionDuration: 2,
-                            pathTransition: "none",
+                        styles={buildStyles({ 
                             pathColor: `#FFFFFF`,
-                            textColor: '#FFFFFF',
-                            trailColor: 'rgba(0, 0, 0, 0)',
+                            textColor: '#FFFFFF',   
                             backgroundColor: '#52B6FF',
                         })}>
                         <p>Hoje</p>
@@ -70,6 +66,8 @@ color: #52B6FF;
 
 >a{
     text-decoration: none;
+    color: #52B6FF
+
 }
 
 

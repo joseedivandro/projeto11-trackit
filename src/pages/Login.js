@@ -15,7 +15,7 @@ import logo from "../img/logo.svg"
 
 
 
-import { ReceivedInfoContext } from "./Context/UseContext";
+import { userContext } from "./Context/UseContext";
 
 export default function Login() {
 
@@ -26,7 +26,7 @@ export default function Login() {
     const [disableInfo, setDisableInfo] = useState(false)
     const [userPassword, setUserPassword] = useState('')
 
-    const { setUserReceivedInfo } = useContext(ReceivedInfoContext)
+    const { setUserReceivedInfo } = useContext(userContext)
 
 
 
