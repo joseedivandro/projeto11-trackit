@@ -40,22 +40,22 @@ export default function Today() {
             .then(res => {
                 setHabitosDia(res.data)
 
-                let habitsConcludedAux = (res.data).filter((habit) => {
+                let HabitosMap = (res.data).filter((habit) => {
                     if (habit.done) {
                         return true
                     }
                     return false
                 })
 
-                habitsConcludedAux = habitsConcludedAux.map((habit) => {
+                HabitosMap = HabitosMap.map((habit) => {
                     return habit.name
                 })
 
-                setHabitsConcluded([...habitsConcludedAux])
+                setHabitsConcluded([...HabitosMap])
 
-                setHabitoPorcentagem((habitsConcludedAux.length / res.data.length) * 100)
+                setHabitoPorcentagem((HabitosMap.length / res.data.length) * 100)
 
-                setNoHabitsConcluded(habitsConcludedAux.length === 0)
+                setNoHabitsConcluded(HabitosMap.length === 0)
 
                 setInfoWasReceived(true)
 

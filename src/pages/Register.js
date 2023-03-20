@@ -98,9 +98,9 @@ export default function Register() {
                 >
                     {disableInfo ? (
                         <ThreeDots
-                            height="80"
-                            width="80"
-                            radius="9"
+                            height="60"
+                            width="60"
+                            radius="12"
                             color="#FFFFFF"
                             ariaLabel="three-dots-loading"
                             wrapperStyle={{}}
@@ -116,7 +116,7 @@ export default function Register() {
             </Form>
 
             <Link to="/" data-test="login-link" >
-                <p>Já tem uma conta? Faça login!</p>
+                <Textrun>Já tem uma conta? Faça login!</Textrun>
             </Link>
 
 
@@ -130,16 +130,23 @@ const Main = styled.main`
 display:flex;
 flex-direction: column;
 align-items: center;
+height: 500px;
+
+
+>a{
+    margin-top:20px;
+    text-decoration-color: #52B6FF;
+}
 
 `
 
 
 const Textrun = styled.text`
->p{
-    margin-top: 25px;
+margin-top: 20px;
+text-decoration-color: #52B6FF;
+    
     color: #52B6FF;
-    text-decoration: underline; 
-}
+
 
 
 `

@@ -44,7 +44,7 @@ export default function Login() {
         }
 
         axios.post(url, infoLoginUser)
-            .then(res => {  
+            .then(res => {
                 const userInfoToStore = JSON.stringify(res.data)
                 localStorage.setItem('userInfo', userInfoToStore)
                 setUserReceivedInfo(JSON.parse(userInfoToStore))
@@ -94,9 +94,10 @@ export default function Login() {
                 >
                     {disableInfo ? (
                         <ThreeDots
-                            height="80"
-                            width="80"
-                            radius="9"
+                            margin-bottom="20px"
+                            height="60"
+                            width="60"
+                            radius="12"
                             color="#FFFFFF"
                             ariaLabel="three-dots-loading"
                             wrapperStyle={{}}
@@ -109,7 +110,7 @@ export default function Login() {
                 </button>
 
                 <Link to="/cadastro" data-test="signup-link">
-                    <p>Não tem uma conta? Cadastre-se!</p>
+                    <Text>  Não tem uma conta? Cadastre-se!</Text>
                 </Link>
             </Form>
         </Main>
@@ -126,15 +127,22 @@ display:flex;
 flex-direction: column;
 align-items: center;
 
-`
-
-const Text = styled.text`
->p{
-    margin-top: 25px;
-    color: #52B6FF;
-    text-decoration: underline; 
+>a{
+    margin-top:20px;
+    text-decoration-color: #52B6FF;
 }
 
+`
+
+const Text = styled.div`
+   
+    margin-top: 20px;
+    color: #52B6FF;
+
+>a{
+        margin-top:20px;
+        text-decoration-color: #52B6FF;
+    }
 
 `
 
@@ -176,5 +184,8 @@ border-color: #D4D4D4;
     color: white;
     font-weight: bold;
     border-color: #D4D4D4;
+
+
+
    
 `

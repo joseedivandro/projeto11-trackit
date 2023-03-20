@@ -6,20 +6,12 @@ import { userContext } from "../Context/UseContext";
 
 
 export default function HeaderUser() {
-
-
     const { userReceivedInfo, setUserReceivedInfo } = useContext(userContext)
-
     const nagivate = useNavigate()
-
-
     if (userReceivedInfo.token === undefined) {
-
         setUserReceivedInfo(JSON.parse(localStorage.getItem('userInfo')))
     }
-
-
-    
+ 
     return (
         <div data-test="header">
             <HeaderPage>
