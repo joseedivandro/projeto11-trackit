@@ -120,15 +120,14 @@ export default function Login() {
 
 
 
-
 const Main = styled.main`
 
 display:flex;
 flex-direction: column;
 align-items: center;
 
->a{
-    margin-top:20px;
+a{
+    
     text-decoration-color: #52B6FF;
 }
 

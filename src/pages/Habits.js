@@ -20,7 +20,7 @@ import trashCan from "../img/trash-can.png"
 export default function Habits() {
 
     const [canBeLoaded, setCanBeLoaded] = useState(false)
-    const [addButtonWasClicked, setAddButtonWasClicked] = useState(false)
+    const [botaoClicado, setbotaoClicado] = useState(false)
     const [infoDisabled, setinfoDisabled] = useState(false)
     const [habitName, setHabitName] = useState('')
     const [escolheDia, setescolheDia] = useState([])
@@ -78,7 +78,7 @@ export default function Habits() {
     function salvarHabitos() {
         const postHabitUrl = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits"
 
-        setinfoDisabled(true)
+        setinfoDisabled(false)
 
         axios.post(postHabitUrl, newHabit, config)
             .then(response => {
@@ -100,8 +100,8 @@ export default function Habits() {
                 setinfoDisabled(false)
                 setHabitName("")
                 setescolheDia([])
-                if (addButtonWasClicked) {
-                    setAddButtonWasClicked(!addButtonWasClicked)
+                if (botaoClicado) {
+                    setbotaoClicado(!botaoClicado)
                 }
                 setCanBeLoaded(true)
             })
@@ -134,14 +134,14 @@ export default function Habits() {
                         <p>Meus hábitos</p>
                         <button
                             data-test="habit-create-btn"
-                            onClick={() => setAddButtonWasClicked(!addButtonWasClicked)}
+                            onClick={() => setbotaoClicado(!botaoClicado)}
                             disabled={infoDisabled}
                         >
                             +
                         </button>
                     </div>
                     <Habitos
-                        addButtonWasClicked={addButtonWasClicked}
+                        botaoClicado={botaoClicado}
                         data-test="habit-create-container"
                     >
                         <input
@@ -168,7 +168,7 @@ export default function Habits() {
                                 data-test="habit-create-cancel-btn"
                                 disabled={infoDisabled}
                                 onClick={() => {
-                                    setAddButtonWasClicked(!addButtonWasClicked)
+                                    setbotaoClicado(!botaoClicado)
                                 }}
                             >
                                 Cancelar
@@ -216,7 +216,7 @@ export default function Habits() {
                         </Habit>
                     ))
                 )}
-            </>) : <div>CARREGANDO</div>}
+            </>) : <div>CARREGANDO...</div>}
             <FooterUsers />
         </Main>
     )
@@ -262,7 +262,7 @@ const Container = styled.section`
 `
 
 const Habitos = styled.section`
-    display: ${props => props.addButtonWasClicked ? "flex" : "none"};
+    display: ${props => props.botaoClicado ? "flex" : "none"};
     box-sizing: border-box;
     flex-direction: column;
     align-items: center;

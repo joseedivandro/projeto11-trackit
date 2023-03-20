@@ -87,7 +87,7 @@ export default function Today() {
                         )))}
                     </ContainerDia>
                 </Main>) : (
-                <div>CARREGANDO</div>
+                <div>CARREGANDO...</div>
             )}
             <FooterUsers />
         </Container>
@@ -125,6 +125,7 @@ const Textos = styled.div`
         color: ${props => props.noHabitsConcluded ? "#BABABA" : "#8FC549"}
     }
 `
+
 
 const ContainerDia = styled.section`
     > div {
