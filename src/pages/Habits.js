@@ -130,12 +130,12 @@ export default function Habits() {
             <UserHeader />
             {canBeLoaded ? (<>
                 <Container>
-                    <div>
+                    <div disabled={infoDisabled}>
                         <p>Meus hábitos</p>
                         <button
                             data-test="habit-create-btn"
                             onClick={() => setbotaoClicado(!botaoClicado)}
-                            disabled={infoDisabled}
+                            
                         >
                             +
                         </button>
